@@ -2,6 +2,7 @@
 // It handles image uploads, displays the uploaded image, processes the image to check its size and dimensions,
 // and provides a download link for the optimized image.
 
+import './popup.css';
 import { processImage } from '../utils/imageProcessor';
 import { ProcessingOptions } from '../types/index';
 import { SettingsService } from '../utils/settingsService';
@@ -33,6 +34,9 @@ function handleImageUpload(event: Event) {
   if (target.files && target.files.length > 0) {
     const file = target.files[0];
     const reader = new FileReader();
+    
+    // Store the original filename without extension
+    const originalFilename = file.name.replace(/\.[^/.]+$/, "");
 
     processingStatus.textContent = 'Loading image...';
     
@@ -51,7 +55,7 @@ function handleImageUpload(event: Event) {
           <p><strong>Original:</strong> ${width}×${height}px, ${fileSizeMB.toFixed(2)}MB</p>
         `;
         
-        processAndOptimizeImage(file);
+        processAndOptimizeImage(file, originalFilename);
       };
       img.src = imgSrc;
     };
@@ -60,7 +64,7 @@ function handleImageUpload(event: Event) {
   }
 }
 
-async function processAndOptimizeImage(file: File) {
+async function processAndOptimizeImage(file: File, originalFilename: string) {
   processingStatus.textContent = 'Optimizing image...';
   
   try {
@@ -68,8 +72,11 @@ async function processAndOptimizeImage(file: File) {
     
     if (optimizedImage) {
       const url = URL.createObjectURL(optimizedImage);
+      
+      // Set download filename using original name + "_optimized"
+      const format = currentSettings.format || 'png';
       downloadButton.href = url;
-      downloadButton.download = `optimized_image.${currentSettings.format || 'png'}`;
+      downloadButton.download = `${originalFilename}_optimized.${format}`;
       downloadButton.style.display = 'block';
       
       // Display optimized image info
@@ -77,7 +84,7 @@ async function processAndOptimizeImage(file: File) {
       img.onload = () => {
         const width = img.width;
         const height = img.height;
-        const fileSizeMB = file.size / (1024 * 1024);
+        const fileSizeMB = optimizedImage.size / (1024 * 1024);
         
         const existingInfo = imageInfo.innerHTML;
         imageInfo.innerHTML = `
@@ -97,3 +104,12 @@ async function processAndOptimizeImage(file: File) {
 
 // Initialize the popup
 initialize();
+
+document.addEventListener('DOMContentLoaded', () => {
+  const openTabButton = document.getElementById('openTabButton');
+  if (openTabButton) {
+    openTabButton.addEventListener('click', () => {
+      chrome.tabs.create({ url: chrome.runtime.getURL('tab/tab.html') });
+    });
+  }
+});

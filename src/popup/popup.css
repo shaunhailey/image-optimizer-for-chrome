@@ -6,6 +6,11 @@ body {
     height: 100vh;
     margin: 0;
     background-color: #f0f0f0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    width: 500px;  /* Set the width */
+    min-height: 600px;  /* Set the minimum height */
+    overflow-y: auto;  /* Allow scrolling if content is larger */
 }
 
 .upload-button, .download-button {
@@ -25,10 +30,16 @@ body {
 }
 
 .image-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 20px 0;
+  width: 460px; /* Make this wide enough for images */
+  min-height: 300px;
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 img {
@@ -36,6 +47,12 @@ img {
     max-height: 200px;
     border: 1px solid #ccc;
     border-radius: 5px;
+}
+
+#imageView {
+  max-width: 100%;
+  max-height: 400px;
+  display: block;
 }
 
 .header {
@@ -90,4 +107,15 @@ img {
 
 input[type="range"].settings-control {
   margin-right: 10px;
+}
+
+.container {
+  padding: 20px;
+}
+
+.button-container {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+  margin-bottom: 15px;
 }

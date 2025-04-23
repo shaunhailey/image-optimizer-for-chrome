@@ -4,41 +4,33 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Image Optimizer</title>
-    <link rel="stylesheet" href="popup.css" />
+    <style>
+      body {
+        width: 300px;
+        padding: 20px;
+        text-align: center;
+        font-family: Arial, sans-serif;
+      }
+      h1 {
+        font-size: 18px;
+        margin-bottom: 20px;
+      }
+      button {
+        padding: 12px 24px;
+        background-color: #4285f4;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 16px;
+      }
+      button:hover {
+        background-color: #3367d6;
+      }
+    </style>
   </head>
   <body>
-    <div class="container">
-      <div class="header">
-        <h1>Image Optimizer</h1>
-        <button id="settingsButton" class="icon-button" title="Settings">
-          ⚙️
-        </button>
-      </div>
-
-      <div id="settings-container" class="settings-container"></div>
-
-      <div class="image-container">
-        <img id="imageView" alt="Image preview" />
-        <div id="image-info"></div>
-      </div>
-
-      <div class="button-container">
-        <label for="uploadButton" class="button primary-button"
-          >Upload Image</label
-        >
-        <input type="file" id="uploadButton" accept="image/*" hidden />
-        <a
-          id="downloadButton"
-          class="button secondary-button"
-          download="optimized_image.png"
-          style="display: none"
-          >Download</a
-        >
-      </div>
-
-      <div id="processing-status" class="status-message"></div>
-    </div>
-
-    <script src="popup.js"></script>
+    <h1>Image Optimizer</h1>
+    <button id="openTabButton">Open Image Optimizer</button>
   </body>
 </html>

@@ -19,7 +19,7 @@ export interface Preset {
     options: ProcessingOptions;
 }
 
-// Default settings that match your original requirements
+// Default settings
 export const DEFAULT_SETTINGS: ProcessingOptions = {
     maxFileSize: 5000000,  // 5MB
     maxWidth: 2000,

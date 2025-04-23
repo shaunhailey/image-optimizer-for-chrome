@@ -15,19 +15,21 @@
     "optimizer",
     "typescript"
   ],
-  "author": "Your Name",
+  "author": "Shaun Hailey",
   "license": "MIT",
   "dependencies": {
     "typescript": "^4.0.0",
-    "webpack": "^5.0.0",
-    "webpack-cli": "^4.0.0",
     "webpack-dev-server": "^3.0.0"
   },
   "devDependencies": {
     "@types/chrome": "0.0.316",
+    "copy-webpack-plugin": "^13.0.0",
     "css-loader": "^5.0.0",
-    "html-webpack-plugin": "^5.0.0",
+    "html-loader": "^5.1.0",
+    "html-webpack-plugin": "^5.6.3",
     "style-loader": "^2.0.0",
-    "ts-loader": "^8.0.0"
+    "ts-loader": "^8.0.0",
+    "webpack": "^5.99.6",
+    "webpack-cli": "^4.10.0"
   }
 }

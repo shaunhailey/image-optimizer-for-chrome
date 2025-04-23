@@ -2,10 +2,11 @@
   "manifest_version": 3,
   "name": "Image Optimizer",
   "version": "1.0",
-  "description": "A Chrome extension to optimize images by resizing and compressing them.",
+  "description": "A tool to optimize images to be under 5MB and 2000x2000 pixels",
   "permissions": [
     "activeTab",
-    "scripting"
+    "scripting",
+    "storage"
   ],
   "action": {
     "default_popup": "popup/popup.html",
@@ -16,7 +17,7 @@
     }
   },
   "background": {
-    "service_worker": "background/background.ts"
+    "service_worker": "background/background.js"
   },
   "icons": {
     "16": "icons/icon16.svg",
@@ -25,8 +26,13 @@
   },
   "web_accessible_resources": [
     {
-      "resources": ["assets/*"],
-      "matches": ["<all_urls>"]
+      "resources": [
+        "tab/tab.html",
+        "assets/*"
+      ],
+      "matches": [
+        "<all_urls>"
+      ]
     }
   ]
 }
