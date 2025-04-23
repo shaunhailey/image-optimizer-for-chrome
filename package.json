@@ -1,0 +1,33 @@
+{
+  "name": "image-optimizer-extension",
+  "version": "1.0.0",
+  "description": "A Chrome extension to optimize images by resizing and compressing them.",
+  "main": "src/popup/popup.ts",
+  "scripts": {
+    "build": "webpack --mode production",
+    "watch": "webpack --mode development --watch",
+    "start": "webpack-dev-server --mode development"
+  },
+  "keywords": [
+    "chrome",
+    "extension",
+    "image",
+    "optimizer",
+    "typescript"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "dependencies": {
+    "typescript": "^4.0.0",
+    "webpack": "^5.0.0",
+    "webpack-cli": "^4.0.0",
+    "webpack-dev-server": "^3.0.0"
+  },
+  "devDependencies": {
+    "@types/chrome": "0.0.316",
+    "css-loader": "^5.0.0",
+    "html-webpack-plugin": "^5.0.0",
+    "style-loader": "^2.0.0",
+    "ts-loader": "^8.0.0"
+  }
+}
